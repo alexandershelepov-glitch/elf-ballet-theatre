@@ -16,6 +16,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/hero.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://elfballet.ru/#organization",
+    "name": "Детский театр балета «Эльф»",
+    "alternateName": "Эльф",
+    "url": "https://elfballet.ru/",
+    "foundingDate": "1992",
+    "telephone": "+79055135311",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Удальцова, 17 к. 1",
+      "addressLocality": "Москва",
+      "addressCountry": "RU"
+    },
+    "sameAs": [
+      "https://www.instagram.com/elf_teatr_baleta/"
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -158,7 +180,7 @@
 
       <div class="container performances__layout">
         <article class="performance-feature">
-          <img src="assets/images/performance-main.jpg" alt="Сцена из спектакля Детского театра балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1291" height="876" src="assets/images/performance-main.jpg" alt="Сцена из спектакля Детского театра балета «Эльф»">
           <div class="performance-feature__shade"></div>
           <div class="performance-feature__caption">
             <span>Репертуар театра</span>
@@ -168,13 +190,13 @@
 
         <div class="performance-mosaic" aria-label="Фотографии спектаклей">
           <figure class="performance-shot performance-shot--wide">
-            <img src="assets/images/performance-2.jpg" alt="Фрагмент сценической постановки театра «Эльф»">
+            <img loading="lazy" decoding="async" width="1320" height="805" src="assets/images/performance-2.jpg" alt="Фрагмент сценической постановки театра «Эльф»">
           </figure>
           <figure class="performance-shot">
-            <img src="assets/images/performance-3.jpg" alt="Артисты театра «Эльф» после спектакля">
+            <img loading="lazy" decoding="async" width="1313" height="848" src="assets/images/performance-3.jpg" alt="Артисты театра «Эльф» после спектакля">
           </figure>
           <figure class="performance-shot">
-            <img src="assets/images/performance-4.jpg" alt="Юная артистка театра «Эльф» на сцене">
+            <img loading="lazy" decoding="async" width="1320" height="1720" src="assets/images/performance-4.jpg" alt="Юная артистка театра «Эльф» на сцене">
           </figure>
         </div>
       </div>
@@ -205,14 +227,14 @@
 
       <div class="container history__visual">
         <figure class="history-photo history-photo--main">
-          <img src="assets/images/history-archive-stage.jpg" alt="Архивная фотография одной из ранних постановок театра «Эльф»">
+          <img loading="lazy" decoding="async" width="4270" height="2900" src="assets/images/history-archive-stage.jpg" alt="Архивная фотография одной из ранних постановок театра «Эльф»">
           <figcaption>Архив театра</figcaption>
         </figure>
         <figure class="history-photo history-photo--small history-photo--one">
-          <img src="assets/images/history-archive-group.jpg" alt="Архивная фотография воспитанников театра «Эльф»">
+          <img loading="lazy" decoding="async" width="2903" height="4106" src="assets/images/history-archive-group.jpg" alt="Архивная фотография воспитанников театра «Эльф»">
         </figure>
         <figure class="history-photo history-photo--small history-photo--two">
-          <img src="assets/images/history-archive-duet.jpg" alt="Архивная сценическая фотография воспитанников театра «Эльф»">
+          <img loading="lazy" decoding="async" width="3024" height="4429" src="assets/images/history-archive-duet.jpg" alt="Архивная сценическая фотография воспитанников театра «Эльф»">
         </figure>
       </div>
 
@@ -226,14 +248,14 @@
 
         <div class="continuity__portraits" aria-label="Основатель и руководитель театра">
           <figure class="portrait-card portrait-card--founder">
-            <img src="assets/images/history-founder.jpg" alt="Наталия Вячеславовна Борисова">
+            <img loading="lazy" decoding="async" width="887" height="1920" src="assets/images/history-founder.jpg" alt="Наталия Вячеславовна Борисова">
             <figcaption>
               <strong>Наталия Вячеславовна Борисова</strong>
               <span>Основатель театра</span>
             </figcaption>
           </figure>
           <figure class="portrait-card portrait-card--current">
-            <img src="assets/images/history-current.jpg" alt="Екатерина Викторовна Анисимова">
+            <img loading="lazy" decoding="async" width="1268" height="1889" src="assets/images/history-current.jpg" alt="Екатерина Викторовна Анисимова">
             <figcaption>
               <strong>Екатерина Викторовна Анисимова</strong>
               <span>Руководитель театра</span>
@@ -253,7 +275,7 @@
       <div class="container teachers__list">
         <article class="teacher-card">
           <div class="teacher-card__portrait">
-            <img src="assets/images/history-founder.jpg" alt="Наталия Вячеславовна Борисова">
+            <img loading="lazy" decoding="async" width="887" height="1920" src="assets/images/history-founder.jpg" alt="Наталия Вячеславовна Борисова">
           </div>
           <div class="teacher-card__content">
             <span class="teacher-card__number">01</span>
@@ -264,7 +286,7 @@
 
         <article class="teacher-card">
           <div class="teacher-card__portrait">
-            <img src="assets/images/history-current.jpg" alt="Екатерина Викторовна Анисимова">
+            <img loading="lazy" decoding="async" width="1268" height="1889" src="assets/images/history-current.jpg" alt="Екатерина Викторовна Анисимова">
           </div>
           <div class="teacher-card__content">
             <span class="teacher-card__number">02</span>
@@ -275,7 +297,7 @@
 
         <article class="teacher-card">
           <div class="teacher-card__portrait">
-            <img src="assets/images/teacher-andrey.jpg" alt="Андрей Александрович Стародубов">
+            <img loading="lazy" decoding="async" width="1285" height="1668" src="assets/images/teacher-andrey.jpg" alt="Андрей Александрович Стародубов">
           </div>
           <div class="teacher-card__content">
             <span class="teacher-card__number">03</span>
@@ -297,27 +319,27 @@
 
       <div class="container gallery-grid" aria-label="Фотографии из жизни театра">
         <figure class="gallery-item gallery-item--hero">
-          <img src="assets/images/gallery-1.jpg" alt="Сценическая фотография театра «Эльф»">
+          <img loading="lazy" decoding="async" width="1189" height="783" src="assets/images/gallery-1.jpg" alt="Сценическая фотография театра «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--one">
-          <img src="assets/images/gallery-2.jpg" alt="Занятие в детской группе театра «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="949" src="assets/images/gallery-2.jpg" alt="Занятие в детской группе театра «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--two">
-          <img src="assets/images/gallery-3.jpg" alt="Театральная студия Детского театра балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="1630" src="assets/images/gallery-3.jpg" alt="Театральная студия Детского театра балета «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--wide">
-          <img src="assets/images/gallery-4.jpg" alt="Фрагмент сценической постановки театра «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="805" src="assets/images/gallery-4.jpg" alt="Фрагмент сценической постановки театра «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--three">
-          <img src="assets/images/gallery-5.jpg" alt="Классический танец в Детском театре балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="1674" src="assets/images/gallery-5.jpg" alt="Классический танец в Детском театре балета «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--four">
-          <img src="assets/images/gallery-6.jpg" alt="Артисты театра «Эльф» после выступления">
+          <img loading="lazy" decoding="async" width="1313" height="848" src="assets/images/gallery-6.jpg" alt="Артисты театра «Эльф» после выступления">
         </figure>
       </div>
     </section>
@@ -376,7 +398,7 @@
         </div>
 
         <figure class="contacts__photo">
-          <img src="assets/images/contacts-stage.jpg" alt="Сцена Детского театра балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1235" height="742" src="assets/images/contacts-stage.jpg" alt="Сцена Детского театра балета «Эльф»">
         </figure>
       </div>
     </section>
