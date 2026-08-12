@@ -1096,7 +1096,7 @@ button{font:inherit}
 }
 .shows-section--dark h2,.shows-head--light h2{color:#fff}
 .shows-head p{margin:22px 0 0;color:var(--muted);font-size:16px;line-height:1.72}
-.shows-split__content p{margin:22px 0 0;color:var(--muted);font-size:16px;line-height:1.72}
+.shows-split__content p{margin:22px 0 0;color:var(--muted);font-size:18px;line-height:1.7}
 .shows-section--dark .shows-split__content p{color:rgba(240,228,233,.82)}
 
 .shows-split{display:grid;grid-template-columns:190px 1fr;gap:44px;align-items:start}
@@ -1253,21 +1253,11 @@ button{font:inherit}
 
 /* Редакционная цитата в блоке «Спектакль, который смотрят с замиранием сердца» */
 @media (min-width:901px){
-  .production-atmosphere__quote{
-    position:relative;
-    margin-top:34px !important;
-    padding-left:34px;
-    font-family:"Cormorant Garamond",Georgia,serif;
-    font-style:italic;
-    font-size:clamp(23px,2vw,29px);
-    line-height:1.38;
-    color:var(--plum-800) !important;
-    border-left:2px solid var(--rose);
-  }
+  .production-atmosphere__quote{position:relative;margin-top:34px !important;padding-left:34px;font-size:18px;line-height:1.7;font-weight:500;color:var(--plum-800) !important;border-left:2px solid var(--rose);}
 }
 
 /* Accent paragraphs styled as editorial quotes (desktop only) */
 @media (min-width:901px){
-  .production-quote{position:relative;margin-top:30px !important;padding-left:34px;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(23px,2vw,29px);line-height:1.38;color:var(--plum-800) !important;border-left:2px solid var(--rose);}
+  .production-quote{position:relative;margin-top:30px !important;padding-left:34px;font-size:18px;line-height:1.7;font-weight:500;color:var(--plum-800) !important;border-left:2px solid var(--rose);}
   .shows-section--dark .production-quote{color:var(--rose-soft) !important;border-left-color:rgba(234,211,217,.55);}
 }
