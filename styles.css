@@ -1250,3 +1250,18 @@ button{font:inherit}
   .shows-cta__phone{font-size:30px}
   .shows-breadcrumbs{margin-bottom:20px}
 }
+
+/* Редакционная цитата в блоке «Спектакль, который смотрят с замиранием сердца» */
+@media (min-width:901px){
+  .production-atmosphere__quote{
+    position:relative;
+    margin-top:34px !important;
+    padding-left:34px;
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-style:italic;
+    font-size:clamp(23px,2vw,29px);
+    line-height:1.38;
+    color:var(--plum-800) !important;
+    border-left:2px solid var(--rose);
+  }
+}
