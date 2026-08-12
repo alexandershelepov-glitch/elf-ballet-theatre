@@ -1265,3 +1265,9 @@ button{font:inherit}
     border-left:2px solid var(--rose);
   }
 }
+
+/* Accent paragraphs styled as editorial quotes (desktop only) */
+@media (min-width:901px){
+  .production-quote{position:relative;margin-top:30px !important;padding-left:34px;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(23px,2vw,29px);line-height:1.38;color:var(--plum-800) !important;border-left:2px solid var(--rose);}
+  .shows-section--dark .production-quote{color:var(--rose-soft) !important;border-left-color:rgba(234,211,217,.55);}
+}
