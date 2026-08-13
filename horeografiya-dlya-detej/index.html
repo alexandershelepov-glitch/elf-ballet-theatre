@@ -45,7 +45,7 @@
       <a href="../#contacts">Контакты</a>
     </nav>
 
-    <a class="header-cta" href="#trial">Пробное занятие</a>
+    <a class="header-cta" data-trial-form-open href="#trial">Пробное занятие</a>
   </header>
 
   <main id="top">
@@ -62,7 +62,7 @@
           <li>Продолжительность занятия: <strong>55 минут</strong></li>
           <li><strong>Пробные занятия бесплатно</strong></li>
         </ul>
-        <a class="button button--accent" href="#trial">Записаться на пробное занятие</a>
+        <a class="button button--accent" data-trial-form-open href="#trial">Записаться на пробное занятие</a>
       </div>
     </section>
 
@@ -142,7 +142,7 @@
         <div class="direction-trial__action">
           <p>Запись по телефону</p>
           <a class="direction-trial__phone" href="tel:+79055135311">+7 905 513-53-11</a>
-          <a class="button button--dark" href="tel:+79055135311">Записаться на пробное занятие</a>
+          <a class="button button--dark" data-trial-form-open href="tel:+79055135311">Записаться на пробное занятие</a>
         </div>
       </div>
     </section>
@@ -212,5 +212,7 @@
   </footer>
 
   <script src="../script.js"></script>
+  <script src="/trial-form-config.js" defer></script>
+  <script src="/trial-form.js" defer></script>
 </body>
 </html>
