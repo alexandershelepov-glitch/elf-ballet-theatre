@@ -1197,7 +1197,10 @@ button{font:inherit}
 .show-card p{margin:12px 0 0;font-size:var(--text-card);line-height:var(--leading-card);color:var(--muted)}
 .show-card a{margin-top:auto;padding-top:18px;font-size:var(--text-small);font-weight:600;letter-spacing:.04em;color:var(--plum-700)}
 .show-card a:hover{color:var(--plum-900)}
+.show-card--linked{position:relative;cursor:pointer}
 .show-card--linked:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.show-card--linked > a::after{content:"";position:absolute;inset:0}
+.show-card--linked:focus-within{border-color:var(--plum-700)}
 
 .shows-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .shows-links a{
