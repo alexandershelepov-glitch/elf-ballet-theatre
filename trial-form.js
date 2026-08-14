@@ -2,9 +2,10 @@
   'use strict';
 
   const config = window.ELF_TRIAL_FORM_CONFIG || {};
-  if (!config.enabled) return;
+  const testMode = new URLSearchParams(window.location.search).get('trial-form-test') === '1';
+  if (config.enabled !== true && !testMode) return;
 
-  const requiredConfig = ['endpoint', 'captchaSiteKey', 'privacyUrl', 'consentUrl'];
+  const requiredConfig = ['endpoint', 'captchaSiteKey'];
   if (requiredConfig.some((key) => typeof config[key] !== 'string' || !config[key].trim())) {
     console.warn('Форма пробного занятия не активирована: публичная конфигурация неполная.');
     return;
@@ -273,6 +274,7 @@
       successCloseButton.hidden = true;
       document.body.classList.add('trial-form-is-open');
       dialog.showModal();
+      loadCaptcha().catch(() => console.warn('Не удалось загрузить SmartCaptcha для формы пробного занятия.'));
       form.elements.contactName.focus();
     });
   });
