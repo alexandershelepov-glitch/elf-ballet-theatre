@@ -73,7 +73,7 @@ test('rejects malformed JSON', async () => {
 test('decodes a base64 body', async () => {
   const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
   const body = Buffer.from(JSON.stringify(validBody)).toString('base64');
-  const result = await handler(event({body, isBase64Encoded: true}), {token: 'iam'});
+  const result = await handler(event({body, isBase64Encoded: true}), {token: {access_token: 'iam'}});
   assert.equal(result.statusCode, 200);
   assert.equal(calls.length, 3);
 });
@@ -108,36 +108,37 @@ test('honeypot returns fake success without external calls', async () => {
 
 test('rejects failed CAPTCHA and sends nothing else', async () => {
   const calls = mockFetch([{ok: true, json: {status: 'failed'}}]);
-  const result = await handler(event(), {token: 'iam'});
+  const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.equal(JSON.parse(result.body).code, 'CAPTCHA_FAILED');
   assert.equal(calls.length, 1);
 });
 
 test('successful delivery sends email and Telegram', async () => {
   const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
-  const result = await handler(event(), {token: 'iam'});
+  const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.equal(result.statusCode, 200);
   assert.equal(calls.length, 3);
   assert.match(calls[1][0], /postbox/);
+  assert.equal(calls[1][1].headers['X-YaCloud-SubjectToken'], 'iam');
   assert.match(calls[2][0], /api\.telegram\.org/);
 });
 
 test('email failure prevents Telegram and returns stable error', async () => {
   const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: false}]);
-  const result = await handler(event(), {token: 'iam'});
+  const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.equal(JSON.parse(result.body).code, 'EMAIL_DELIVERY_FAILED');
   assert.equal(calls.length, 2);
 });
 
 test('Telegram failure after email still returns success', async () => {
   mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: false}]);
-  const result = await handler(event(), {token: 'iam'});
+  const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.equal(JSON.parse(result.body).ok, true);
 });
 
 test('Telegram notification contains no personal form fields', async () => {
   const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
-  await handler(event(), {token: 'iam'});
+  await handler(event(), {token: {access_token: 'iam'}});
   const telegram = JSON.parse(calls[2][1].body).text;
   assert.doesNotMatch(telegram, /Александра|999|Есть опыт|Возраст/);
   assert.match(telegram, /Классический танец/);
@@ -145,12 +146,17 @@ test('Telegram notification contains no personal form fields', async () => {
 
 test('success response contains a safe submission ID', async () => {
   mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
-  const result = await handler(event(), {token: 'iam'});
+  const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.match(JSON.parse(result.body).submissionId, /^ELF-\d{8}-[A-F0-9]{6}$/);
 });
 
 test('missing backend configuration returns SERVER_CONFIG_ERROR', async () => {
   delete process.env.SMARTCAPTCHA_SERVER_KEY;
-  const result = await handler(event(), {token: 'iam'});
+  const result = await handler(event(), {token: {access_token: 'iam'}});
+  assert.equal(JSON.parse(result.body).code, 'SERVER_CONFIG_ERROR');
+});
+
+test('requires access_token in the Yandex Cloud context', async () => {
+  const result = await handler(event(), {token: {}});
   assert.equal(JSON.parse(result.body).code, 'SERVER_CONFIG_ERROR');
 });

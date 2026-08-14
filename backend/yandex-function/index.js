@@ -85,7 +85,7 @@ function configIsValid(context) {
   const telegramEnabled = process.env.TELEGRAM_ENABLED !== 'false';
   return Boolean(
     process.env.SMARTCAPTCHA_SERVER_KEY && process.env.POSTBOX_FROM_EMAIL &&
-    process.env.POSTBOX_TO_EMAIL && process.env.CONSENT_VERSION && context?.token &&
+    process.env.POSTBOX_TO_EMAIL && process.env.CONSENT_VERSION && context?.token?.access_token &&
     (!telegramEnabled || (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID))
   );
 }
@@ -180,7 +180,7 @@ module.exports.handler = async function handler(event = {}, context = {}) {
   const id = submissionId();
   const date = moscowDate();
   try {
-    await sendEmail(data, id, date, context.token);
+    await sendEmail(data, id, date, context.token.access_token);
     console.info(`submission ${id} email sent`);
   } catch {
     console.error(`submission ${id} email delivery failed`);
