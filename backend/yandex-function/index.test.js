@@ -120,6 +120,19 @@ test('successful delivery sends email and Telegram', async () => {
   assert.equal(calls.length, 3);
   assert.match(calls[1][0], /postbox/);
   assert.equal(calls[1][1].headers['X-YaCloud-SubjectToken'], 'iam');
+  const postboxPayload = JSON.parse(calls[1][1].body);
+  assert.deepEqual(postboxPayload, {
+    FromEmailAddress: 'sender@example.test',
+    Destination: {ToAddresses: ['recipient@example.test']},
+    Content: {Simple: {
+      Subject: {Data: '[Эльф] Новая заявка — Классический танец', Charset: 'UTF-8'},
+      Body: {Text: {Data: postboxPayload.Content.Simple.Body.Text.Data, Charset: 'UTF-8'}}
+    }}
+  });
+  assert.match(postboxPayload.Content.Simple.Body.Text.Data, /Новая заявка с сайта Детского театра балета «Эльф»/);
+  assert.equal(postboxPayload.fromAddress, undefined);
+  assert.equal(postboxPayload.destination, undefined);
+  assert.equal(postboxPayload.content, undefined);
   assert.match(calls[2][0], /api\.telegram\.org/);
 });
 

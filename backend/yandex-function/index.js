@@ -127,11 +127,11 @@ function emailText(data, id, date) {
 
 async function sendEmail(data, id, date, iamToken) {
   const payload = {
-    fromAddress: process.env.POSTBOX_FROM_EMAIL,
-    destination: {toAddresses: [process.env.POSTBOX_TO_EMAIL]},
-    content: {simple: {
-      subject: {data: `[Эльф] Новая заявка — ${DIRECTIONS[data.direction]}`, charset: 'UTF-8'},
-      body: {text: {data: emailText(data, id, date), charset: 'UTF-8'}}
+    FromEmailAddress: process.env.POSTBOX_FROM_EMAIL,
+    Destination: {ToAddresses: [process.env.POSTBOX_TO_EMAIL]},
+    Content: {Simple: {
+      Subject: {Data: `[Эльф] Новая заявка — ${DIRECTIONS[data.direction]}`, Charset: 'UTF-8'},
+      Body: {Text: {Data: emailText(data, id, date), Charset: 'UTF-8'}}
     }}
   };
   const result = await fetch(POSTBOX_URL, {
