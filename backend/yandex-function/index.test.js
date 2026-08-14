@@ -2,9 +2,12 @@
 
 const {test, beforeEach, afterEach} = require('node:test');
 const assert = require('node:assert/strict');
+const {EventEmitter} = require('node:events');
+const https = require('node:https');
 const {handler} = require('./index');
 
 const originalFetch = global.fetch;
+const originalHttpsRequest = https.request;
 const originalEnv = {...process.env};
 const originalConsole = {info: console.info, warn: console.warn, error: console.error};
 const validBody = {
@@ -30,6 +33,27 @@ function mockFetch(sequence) {
   return calls;
 }
 
+function mockHttps({statusCode = 200, error = null, timeout = false} = {}) {
+  const state = {body: '', destroyed: false, resumed: false, timeoutMs: null};
+  https.request = (options, onResponse) => {
+    state.options = options;
+    const request = new EventEmitter();
+    request.write = (chunk) => { state.body += chunk; };
+    request.setTimeout = (milliseconds, callback) => {
+      state.timeoutMs = milliseconds;
+      state.timeoutCallback = callback;
+    };
+    request.destroy = () => { state.destroyed = true; };
+    request.end = () => queueMicrotask(() => {
+      if (timeout) state.timeoutCallback();
+      else if (error) request.emit('error', error);
+      else onResponse({statusCode, resume: () => { state.resumed = true; }});
+    });
+    return request;
+  };
+  return state;
+}
+
 function captureLogs() {
   const logs = [];
   for (const level of ['info', 'warn', 'error']) {
@@ -44,10 +68,12 @@ beforeEach(() => {
     POSTBOX_FROM_EMAIL: 'sender@example.test', POSTBOX_TO_EMAIL: 'recipient@example.test',
     TELEGRAM_BOT_TOKEN: 'test-bot-token', TELEGRAM_CHAT_ID: 'test-chat-id', TELEGRAM_ENABLED: 'true', CONSENT_VERSION: 'test-v1'
   });
+  mockHttps();
 });
 
 afterEach(() => {
   global.fetch = originalFetch;
+  https.request = originalHttpsRequest;
   process.env = {...originalEnv};
   Object.assign(console, originalConsole);
 });
@@ -85,11 +111,11 @@ test('rejects malformed JSON', async () => {
 });
 
 test('decodes a base64 body', async () => {
-  const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
+  const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
   const body = Buffer.from(JSON.stringify(validBody)).toString('base64');
   const result = await handler(event({body, isBase64Encoded: true}), {token: {access_token: 'iam'}});
   assert.equal(result.statusCode, 200);
-  assert.equal(calls.length, 3);
+  assert.equal(calls.length, 2);
 });
 
 test('rejects oversized payload', async () => {
@@ -141,10 +167,11 @@ test('logs a CAPTCHA provider error without provider details', async () => {
 
 test('successful delivery sends email and Telegram', async () => {
   const logs = captureLogs();
-  const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
+  const telegram = mockHttps({statusCode: 200});
+  const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
   const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.equal(result.statusCode, 200);
-  assert.equal(calls.length, 3);
+  assert.equal(calls.length, 2);
   assert.match(calls[1][0], /postbox/);
   assert.equal(calls[1][1].headers['X-YaCloud-SubjectToken'], 'iam');
   const postboxPayload = JSON.parse(calls[1][1].body);
@@ -160,7 +187,12 @@ test('successful delivery sends email and Telegram', async () => {
   assert.equal(postboxPayload.fromAddress, undefined);
   assert.equal(postboxPayload.destination, undefined);
   assert.equal(postboxPayload.content, undefined);
-  assert.match(calls[2][0], /api\.telegram\.org/);
+  assert.deepEqual(telegram.options, {
+    hostname: 'api.telegram.org', port: 443, path: '/bottest-bot-token/sendMessage', method: 'POST', family: 4,
+    headers: {'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(telegram.body)}
+  });
+  assert.equal(telegram.timeoutMs, 10000);
+  assert.equal(telegram.resumed, true);
   for (const message of [
     'trial request received', 'trial captcha validation started', 'trial captcha passed',
     'trial email sending started', 'trial email sent', 'trial telegram sending started', 'trial telegram sent'
@@ -179,22 +211,46 @@ test('email failure prevents Telegram and returns stable error', async () => {
 
 test('Telegram failure after email still returns success', async () => {
   const logs = captureLogs();
-  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: false, status: 502}]);
+  mockHttps({statusCode: 400});
+  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
   const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.equal(JSON.parse(result.body).ok, true);
-  assert.ok(logs.includes('trial telegram failed status=502'));
+  assert.ok(logs.includes('trial telegram failed status=400'));
+});
+
+test('Telegram transport error is logged safely and does not fail the submission', async () => {
+  const logs = captureLogs();
+  const transportError = Object.assign(new Error('sensitive URL must not be logged'), {code: 'ECONNRESET'});
+  mockHttps({error: transportError});
+  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
+  const result = await handler(event(), {token: {access_token: 'iam'}});
+  assert.equal(JSON.parse(result.body).ok, true);
+  assert.ok(logs.includes('trial telegram transport error code=ECONNRESET'));
+  assert.doesNotMatch(logs.join('\n'), /sensitive URL|test-bot-token|test-chat-id/);
+});
+
+test('Telegram request times out after 10 seconds and is destroyed', async () => {
+  const logs = captureLogs();
+  const telegram = mockHttps({timeout: true});
+  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
+  const result = await handler(event(), {token: {access_token: 'iam'}});
+  assert.equal(JSON.parse(result.body).ok, true);
+  assert.equal(telegram.timeoutMs, 10000);
+  assert.equal(telegram.destroyed, true);
+  assert.ok(logs.some((message) => /submission ELF-\d{8}-[A-F0-9]{6} telegram notification failed/.test(message)));
 });
 
 test('Telegram notification contains no personal form fields', async () => {
-  const calls = mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
+  const telegram = mockHttps({statusCode: 200});
+  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
   await handler(event(), {token: {access_token: 'iam'}});
-  const telegram = JSON.parse(calls[2][1].body).text;
-  assert.doesNotMatch(telegram, /Александра|999|Есть опыт|Возраст/);
-  assert.match(telegram, /Классический танец/);
+  const telegramText = JSON.parse(telegram.body).text;
+  assert.doesNotMatch(telegramText, /Александра|999|Есть опыт|Возраст|Возраст занимающегося|\b6\b/);
+  assert.match(telegramText, /Классический танец/);
 });
 
 test('success response contains a safe submission ID', async () => {
-  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}, {ok: true}]);
+  mockFetch([{ok: true, json: {status: 'ok'}}, {ok: true}]);
   const result = await handler(event(), {token: {access_token: 'iam'}});
   assert.match(JSON.parse(result.body).submissionId, /^ELF-\d{8}-[A-F0-9]{6}$/);
 });

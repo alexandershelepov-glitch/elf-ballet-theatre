@@ -1,6 +1,7 @@
 'use strict';
 
 const crypto = require('node:crypto');
+const https = require('node:https');
 
 const CAPTCHA_URL = 'https://smartcaptcha.cloud.yandex.ru/validate';
 const POSTBOX_URL = 'https://postbox.cloud.yandex.net/v2/email/outbound-emails';
@@ -148,15 +149,51 @@ async function sendEmail(data, id, date, iamToken) {
 async function sendTelegram(data, id, date) {
   if (process.env.TELEGRAM_ENABLED === 'false') return;
   console.info('trial telegram sending started');
+  const botToken = String(process.env.TELEGRAM_BOT_TOKEN || '').trim();
+  const chatId = String(process.env.TELEGRAM_CHAT_ID || '').trim();
   const text = ['🔔 Новая заявка с сайта «Эльф»', '', `Заявка: ${id}`, `Направление: ${DIRECTIONS[data.direction]}`, `Источник: ${data.sourcePage}`, `Время: ${date}`, '', 'Полная заявка отправлена на почту.'].join('\n');
-  const result = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-    method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({chat_id: process.env.TELEGRAM_CHAT_ID, text})
+  const body = JSON.stringify({chat_id: chatId, text});
+
+  await new Promise((resolve, reject) => {
+    let settled = false;
+    let timedOut = false;
+    const fail = () => {
+      if (settled) return;
+      settled = true;
+      reject(new Error('TELEGRAM_DELIVERY_FAILED'));
+    };
+    const request = https.request({
+      hostname: 'api.telegram.org',
+      port: 443,
+      path: `/bot${botToken}/sendMessage`,
+      method: 'POST',
+      family: 4,
+      headers: {'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body)}
+    }, (response) => {
+      response.resume();
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        if (settled) return;
+        settled = true;
+        console.info('trial telegram sent');
+        resolve();
+        return;
+      }
+      console.error(`trial telegram failed status=${response.statusCode}`);
+      fail();
+    });
+
+    request.setTimeout(10000, () => {
+      timedOut = true;
+      request.destroy();
+      fail();
+    });
+    request.on('error', (error) => {
+      if (!timedOut) console.error(`trial telegram transport error code=${String(error?.code || 'UNKNOWN')}`);
+      fail();
+    });
+    request.write(body);
+    request.end();
   });
-  if (!result.ok) {
-    console.error(`trial telegram failed status=${result.status}`);
-    throw new Error('TELEGRAM_DELIVERY_FAILED');
-  }
-  console.info('trial telegram sent');
 }
 
 module.exports.handler = async function handler(event = {}, context = {}) {
