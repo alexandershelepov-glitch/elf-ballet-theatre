@@ -139,16 +139,24 @@ async function sendEmail(data, id, date, iamToken) {
     headers: {'Content-Type': 'application/json', 'X-YaCloud-SubjectToken': iamToken},
     body: JSON.stringify(payload)
   });
-  if (!result.ok) throw new Error('EMAIL_DELIVERY_FAILED');
+  if (!result.ok) {
+    console.error(`trial email provider failed status=${result.status}`);
+    throw new Error('EMAIL_DELIVERY_FAILED');
+  }
 }
 
 async function sendTelegram(data, id, date) {
   if (process.env.TELEGRAM_ENABLED === 'false') return;
+  console.info('trial telegram sending started');
   const text = ['🔔 Новая заявка с сайта «Эльф»', '', `Заявка: ${id}`, `Направление: ${DIRECTIONS[data.direction]}`, `Источник: ${data.sourcePage}`, `Время: ${date}`, '', 'Полная заявка отправлена на почту.'].join('\n');
   const result = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
     method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({chat_id: process.env.TELEGRAM_CHAT_ID, text})
   });
-  if (!result.ok) throw new Error('TELEGRAM_DELIVERY_FAILED');
+  if (!result.ok) {
+    console.error(`trial telegram failed status=${result.status}`);
+    throw new Error('TELEGRAM_DELIVERY_FAILED');
+  }
+  console.info('trial telegram sent');
 }
 
 module.exports.handler = async function handler(event = {}, context = {}) {
@@ -156,31 +164,58 @@ module.exports.handler = async function handler(event = {}, context = {}) {
   const origin = String(headers.origin || '');
   const allowed = parseAllowedOrigins().includes(origin);
   const method = methodOf(event);
+  console.info('trial request received');
 
-  if (!allowed) return response(403, 'ORIGIN_NOT_ALLOWED', origin, false);
+  if (!allowed) {
+    console.warn('trial rejected: origin');
+    return response(403, 'ORIGIN_NOT_ALLOWED', origin, false);
+  }
   if (method === 'OPTIONS') return {statusCode: 204, headers: headersFor(origin, true), body: ''};
-  if (method !== 'POST') return response(405, 'METHOD_NOT_ALLOWED', origin, true);
-  if (!String(headers['content-type'] || '').toLowerCase().startsWith('application/json')) return response(400, 'VALIDATION_ERROR', origin, true);
+  if (method !== 'POST') {
+    console.warn('trial rejected: validation');
+    return response(405, 'METHOD_NOT_ALLOWED', origin, true);
+  }
+  if (!String(headers['content-type'] || '').toLowerCase().startsWith('application/json')) {
+    console.warn('trial rejected: validation');
+    return response(400, 'VALIDATION_ERROR', origin, true);
+  }
 
   const parsed = parseBody(event);
-  if (parsed.error) return response(parsed.error === 'PAYLOAD_TOO_LARGE' ? 413 : 400, parsed.error, origin, true);
+  if (parsed.error) {
+    console.warn('trial rejected: validation');
+    return response(parsed.error === 'PAYLOAD_TOO_LARGE' ? 413 : 400, parsed.error, origin, true);
+  }
   const data = validate(parsed.value);
-  if (!data) return response(400, 'VALIDATION_ERROR', origin, true);
+  if (!data) {
+    console.warn('trial rejected: validation');
+    return response(400, 'VALIDATION_ERROR', origin, true);
+  }
   if (data.website) return response(200, {ok: true}, origin, true);
-  if (!configIsValid(context)) return response(500, 'SERVER_CONFIG_ERROR', origin, true);
+  if (!configIsValid(context)) {
+    console.error('trial rejected: config');
+    return response(500, 'SERVER_CONFIG_ERROR', origin, true);
+  }
 
   let captchaOk;
+  console.info('trial captcha validation started');
   try {
     captchaOk = await validateCaptcha(data.smartToken, sourceIp(event, headers));
   } catch {
+    console.error('trial captcha provider error');
     return response(500, 'INTERNAL_ERROR', origin, true);
   }
-  if (!captchaOk) return response(400, 'CAPTCHA_FAILED', origin, true);
+  if (!captchaOk) {
+    console.warn('trial rejected: captcha');
+    return response(400, 'CAPTCHA_FAILED', origin, true);
+  }
+  console.info('trial captcha passed');
 
   const id = submissionId();
   const date = moscowDate();
+  console.info('trial email sending started');
   try {
     await sendEmail(data, id, date, context.token.access_token);
+    console.info('trial email sent');
     console.info(`submission ${id} email sent`);
   } catch {
     console.error(`submission ${id} email delivery failed`);
