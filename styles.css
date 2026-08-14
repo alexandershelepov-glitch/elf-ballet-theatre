@@ -1211,6 +1211,21 @@ button{font:inherit}
 }
 .shows-links a:hover{border-color:var(--plum-700);color:var(--plum-900)}
 
+.messenger-lead{margin:22px 0 0;font-size:13px;font-weight:600;color:rgba(50,19,38,.58)}
+.trial__action>p.messenger-lead,.direction-trial__action>p.messenger-lead{font-size:13px;font-weight:600;text-transform:none;letter-spacing:.02em}
+.messenger-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.messenger-button{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--plum-700);transition:.2s}
+.messenger-button:hover{border-color:var(--plum-700);color:var(--plum-900)}
+.messenger-button:focus-visible{outline:2px solid var(--plum-700);outline-offset:2px}
+.messenger-button__dot{width:8px;height:8px;border-radius:50%}
+.messenger-button--telegram .messenger-button__dot{background:#2aabee}
+.messenger-button--whatsapp .messenger-button__dot{background:#25d366}
+.contacts .messenger-lead,.direction-location__action .messenger-lead{color:rgba(255,255,255,.66)}
+.direction-location__action p.messenger-lead{margin:22px 0 0;font-size:13px;font-weight:600}
+.contacts .messenger-button,.direction-location__action .messenger-button{border-color:rgba(255,255,255,.28);color:#fff}
+.contacts .messenger-button:hover,.direction-location__action .messenger-button:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.contacts .messenger-button:focus-visible,.direction-location__action .messenger-button:focus-visible{outline-color:rgba(255,255,255,.7)}
+
 .shows-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:250px;gap:14px}
 .shows-mosaic__item{margin:0;overflow:hidden;border-radius:var(--radius-lg);background:var(--plum-950)}
 .shows-mosaic__item img{width:100%;height:100%;object-fit:cover}
