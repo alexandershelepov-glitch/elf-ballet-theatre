@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Архивные отзывы и пожелания артистов, педагогов и деятелей культуры о Детском театре балета «Эльф» в Москве.">
+  <title>О театре говорят — Детский театр балета «Эльф»</title>
+  <link rel="canonical" href="https://elfballet.ru/o-teatre-govoryat/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Детский театр балета «Эльф»">
+  <meta property="og:title" content="О театре говорят — Детский театр балета «Эльф»">
+  <meta property="og:description" content="Архивные отзывы и пожелания артистов, педагогов и деятелей культуры о Детском театре балета «Эльф» в Москве.">
+  <meta property="og:url" content="https://elfballet.ru/o-teatre-govoryat/">
+  <meta property="og:image" content="https://elfballet.ru/assets/images/archive/review-plisetsky.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://elfballet.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "О театре говорят",
+        "item": "https://elfballet.ru/o-teatre-govoryat/"
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/icons/site.webmanifest">
+  <meta name="theme-color" content="#5a2146">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Page-specific styles for the theatre archive page — do not affect other pages */
+    .archive-hero {
+      padding: 168px 0 84px;
+      color: #fff;
+      background:
+        radial-gradient(120% 140% at 85% 0%, rgba(200,131,150,.18) 0%, rgba(200,131,150,0) 55%),
+        linear-gradient(180deg, var(--plum-950) 0%, var(--plum-900) 100%);
+    }
+    .archive-hero h1 {
+      margin: 0;
+      max-width: 720px;
+      font-family: var(--font-display);
+      font-size: clamp(44px, 5.6vw, 72px);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      text-wrap: balance;
+    }
+    .archive-hero__lead {
+      margin: 26px 0 0;
+      max-width: 680px;
+      font-size: var(--text-body-lg);
+      line-height: var(--leading-body-lg);
+      color: #f3e6ea;
+    }
+    .archive-hero__text {
+      margin: 14px 0 0;
+      max-width: 680px;
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: rgba(243,230,234,.82);
+    }
+
+    .archive-feature {
+      padding: 96px 0 72px;
+      background: var(--paper);
+    }
+    .archive-feature__grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      grid-template-areas: "media head" "media body";
+      column-gap: clamp(36px, 5vw, 76px);
+      row-gap: 22px;
+      align-items: center;
+    }
+    .archive-feature__head { grid-area: head; align-self: end; }
+    .archive-feature__media { grid-area: media; }
+    .archive-feature__body { grid-area: body; align-self: start; }
+
+    .archive-scan {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 16px 16px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      text-align: center;
+      font: inherit;
+      color: inherit;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .archive-scan:hover {
+      border-color: rgba(97,33,67,.38);
+      box-shadow: 0 24px 70px rgba(47,18,37,.14);
+    }
+    .archive-scan:focus-visible {
+      outline: 2px solid var(--plum-700);
+      outline-offset: 3px;
+    }
+    .archive-scan img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .archive-scan__hint {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--muted);
+    }
+
+    .archive-person h2 {
+      margin: 0;
+      color: var(--plum-900);
+      font-family: var(--font-display);
+      font-size: clamp(34px, 3.6vw, 48px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      text-wrap: balance;
+    }
+    .archive-person__role {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .archive-quote {
+      margin: 28px 0 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--rose);
+      color: var(--plum-800);
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.2vw, 27px);
+      font-weight: 500;
+      line-height: 1.42;
+    }
+    .archive-quote p { margin: 0; }
+    .archive-person__meta {
+      margin: 24px 0 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .archive-person__meta strong { font-weight: 600; }
+    .archive-note {
+      margin: 28px 0 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--rose);
+      color: var(--ink);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+    }
+
+    .archive-bridge {
+      padding: 26px 0 72px;
+      background: var(--paper);
+    }
+    .archive-bridge p {
+      margin: 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-size: clamp(21px, 2vw, 25px);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .archive-collection {
+      padding: 88px 0 96px;
+      background: var(--cream);
+    }
+    .archive-collection__list {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(72px, 9vw, 120px);
+    }
+    .archive-item {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      grid-template-areas: "media head" "media body";
+      column-gap: clamp(36px, 5vw, 76px);
+      row-gap: 22px;
+      align-items: start;
+    }
+    .archive-item--flip {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+      grid-template-areas: "head media" "body media";
+    }
+    .archive-item__head { grid-area: head; }
+    .archive-item__media { grid-area: media; }
+    .archive-item__body { grid-area: body; }
+
+    .archive-outro {
+      padding: 96px 0 104px;
+      background: var(--paper);
+    }
+    .archive-outro h2 {
+      margin: 0;
+      max-width: 720px;
+      color: var(--plum-900);
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -.03em;
+      text-wrap: balance;
+    }
+    .archive-outro__text {
+      margin: 22px 0 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+    }
+    .archive-outro__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 36px;
+      margin-top: 34px;
+    }
+    .archive-outro__links a {
+      color: var(--plum-700);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(97,33,67,.32);
+      padding-bottom: 3px;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .archive-outro__links a:hover {
+      color: var(--plum-900);
+      border-color: var(--plum-900);
+    }
+
+    .archive-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(24,8,20,.9);
+    }
+    .archive-lightbox[hidden] { display: none; }
+    .archive-lightbox__img {
+      max-width: 100%;
+      max-height: calc(100vh - 40px);
+      max-height: calc(100dvh - 40px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+    }
+    .archive-lightbox__close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+      background: rgba(36,16,31,.55);
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .archive-lightbox__close:hover { background: rgba(36,16,31,.85); }
+    .archive-lightbox__close:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .archive-hero { padding: 140px 0 64px; }
+      .archive-feature { padding: 72px 0 56px; }
+      .archive-feature__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .archive-feature__head { order: 1; }
+      .archive-feature__media { order: 2; margin-top: 24px; max-width: 560px; }
+      .archive-feature__body { order: 3; }
+      .archive-collection { padding: 64px 0 72px; }
+      .archive-item,
+      .archive-item--flip {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0;
+      }
+      .archive-item__head { order: 1; }
+      .archive-item__media { order: 2; margin-top: 24px; width: 100%; }
+      .archive-item__body { order: 3; }
+      .archive-bridge { padding: 20px 0 56px; }
+      .archive-outro { padding: 72px 0 80px; }
+    }
+    @media (max-width: 480px) {
+      .archive-hero { padding: 128px 0 56px; }
+      .archive-scan { padding: 12px 12px 10px; }
+      .archive-quote { padding-left: 20px; }
+      .archive-note { padding-left: 20px; }
+      .archive-lightbox { padding: 12px; }
+      .archive-lightbox__img {
+        max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
+      }
+      .archive-lightbox__close { top: 10px; right: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="Эльф — на главную">
+      <span class="brand__name">Эльф</span>
+      <span class="brand__caption">Детский театр балета</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span>
+      <span class="sr-only">Открыть меню</span>
+    </button>
+
+    <nav class="nav" id="main-nav" aria-label="Главная навигация">
+      <a href="../#directions">Направления</a>
+      <a href="../#performances">Спектакли</a>
+      <a href="../#history">О театре</a>
+      <a href="../#teachers">Педагоги</a>
+      <a href="../#gallery">Галерея</a>
+      <a href="../#contacts">Контакты</a>
+    </nav>
+
+    <a class="header-cta" data-trial-form-open href="tel:+79055135311">Пробное занятие</a>
+  </header>
+
+  <main id="top">
+    <section class="archive-hero" aria-labelledby="archive-title">
+      <div class="container">
+        <p class="eyebrow eyebrow--light">Архив театра</p>
+        <h1 id="archive-title">О театре говорят</h1>
+        <p class="archive-hero__lead">В архиве Детского театра балета «Эльф» сохранились отзывы и пожелания артистов, педагогов и деятелей культуры, которые в разные годы знакомились с театром, его воспитанниками и постановками.</p>
+        <p class="archive-hero__text">Эти страницы — часть истории «Эльфа»: живые слова, оставленные после встреч, спектаклей и творческого общения.</p>
+      </div>
+    </section>
+
+    <section class="archive-feature" aria-labelledby="plisetsky-title">
+      <div class="container archive-feature__grid">
+        <div class="archive-feature__head archive-person">
+          <h2 id="plisetsky-title">Азарий Михайлович Плисецкий</h2>
+          <p class="archive-person__role">Заслуженный артист РСФСР, артист балета, педагог и хореограф</p>
+        </div>
+
+        <button class="archive-scan archive-feature__media" type="button"
+                data-full="../assets/images/archive/review-plisetsky.jpg"
+                data-caption="Азарий Михайлович Плисецкий — отзыв из архива театра, Лозанна, 30 мая 2001 года">
+          <img decoding="async" width="826" height="1169"
+               src="../assets/images/archive/review-plisetsky.jpg"
+               alt="Скан отзыва Азария Плисецкого: портрет, биографическая справка и рукописное пожелание коллективу театра «Эльф», Лозанна, 30 мая 2001 года">
+          <span class="archive-scan__hint">Нажмите, чтобы рассмотреть документ</span>
+        </button>
+
+        <div class="archive-feature__body">
+          <blockquote class="archive-quote">
+            <p>Желаю новых успехов коллективу детского театра балета «Эльф» и его художественному руководителю Наталье Борисовой!</p>
+          </blockquote>
+          <p class="archive-person__meta"><strong>Азарий Плисецкий</strong><br>Лозанна · 30 мая 2001 года</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="archive-bridge">
+      <div class="container">
+        <p>Эти строки сохранились в архиве театра вместе с фотографиями, программами и другими свидетельствами его истории. Каждая из них связана с конкретной встречей, спектаклем и людьми, которые были рядом с «Эльфом».</p>
+      </div>
+    </section>
+
+    <section class="archive-collection" aria-label="Архивные документы театра">
+      <div class="container archive-collection__list">
+
+        <article class="archive-item">
+          <div class="archive-item__head archive-person">
+            <h2>Анатолий Владимирович Емельянов</h2>
+            <p class="archive-person__role">Художественный руководитель театра «Корона русского балета», хореограф</p>
+          </div>
+          <button class="archive-scan archive-item__media" type="button"
+                  data-full="../assets/images/archive/review-emelyanov.jpg"
+                  data-caption="Анатолий Владимирович Емельянов — отзыв из архива театра, 24 октября 2002 года">
+            <img loading="lazy" decoding="async" width="826" height="1169"
+                 src="../assets/images/archive/review-emelyanov.jpg"
+                 alt="Скан отзыва Анатолия Емельянова с рукописным пожеланием театру «Эльф», 24 октября 2002 года">
+            <span class="archive-scan__hint">Нажмите, чтобы рассмотреть документ</span>
+          </button>
+          <div class="archive-item__body">
+            <blockquote class="archive-quote">
+              <p>Дорогие Эльфики! Огромное спасибо вам и вашим воспитателям за волнующую сказку, прекрасную игру, песню любви и добра, которые вы отдали зрителям на этом спектакле. Счастья и удачи!</p>
+            </blockquote>
+            <p class="archive-person__meta">24 октября 2002 года</p>
+          </div>
+        </article>
+
+        <article class="archive-item archive-item--flip">
+          <div class="archive-item__head archive-person">
+            <h2>Владимир Петрович Кириллов</h2>
+            <p class="archive-person__role">Народный артист РСФСР</p>
+          </div>
+          <button class="archive-scan archive-item__media" type="button"
+                  data-full="../assets/images/archive/review-kirillov.jpg"
+                  data-caption="Владимир Петрович Кириллов — отзыв из архива театра">
+            <img loading="lazy" decoding="async" width="826" height="1169"
+                 src="../assets/images/archive/review-kirillov.jpg"
+                 alt="Скан отзыва Владимира Кириллова, народного артиста РСФСР, с рукописным пожеланием театру «Эльф»">
+            <span class="archive-scan__hint">Нажмите, чтобы рассмотреть документ</span>
+          </button>
+          <div class="archive-item__body">
+            <blockquote class="archive-quote">
+              <p>Дорогие Эльфики, дети и педагоги! Вы были прелестны в спектакле. Спасибо вам за любовь. Удачи вам! Всего доброго.</p>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="archive-item">
+          <div class="archive-item__head archive-person">
+            <h2>Анна Алексидзе</h2>
+            <p class="archive-person__role">Балерина, педагог и хореограф</p>
+          </div>
+          <button class="archive-scan archive-item__media" type="button"
+                  data-full="../assets/images/archive/review-aleksidze.jpg"
+                  data-caption="Анна Алексидзе — отзыв из архива театра">
+            <img loading="lazy" decoding="async" width="826" height="1169"
+                 src="../assets/images/archive/review-aleksidze.jpg"
+                 alt="Скан отзыва Анны Алексидзе с рукописными пожеланиями детям и педагогам театра «Эльф»">
+            <span class="archive-scan__hint">Нажмите, чтобы рассмотреть документ</span>
+          </button>
+          <div class="archive-item__body">
+            <blockquote class="archive-quote">
+              <p>Замечательным детям и их педагогам с пожеланиями счастья, удачи, света и всего самого наилучшего!</p>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="archive-item archive-item--flip">
+          <div class="archive-item__head archive-person">
+            <h2>Тихон Николаевич Хренников</h2>
+            <p class="archive-person__role">Композитор, народный артист СССР</p>
+          </div>
+          <button class="archive-scan archive-item__media" type="button"
+                  data-full="../assets/images/archive/review-khrennikov.jpg"
+                  data-caption="Тихон Николаевич Хренников — документ из архива театра">
+            <img loading="lazy" decoding="async" width="826" height="1169"
+                 src="../assets/images/archive/review-khrennikov.jpg"
+                 alt="Скан документа с рукописным пожеланием Тихона Хренникова коллективу театра «Эльф»">
+            <span class="archive-scan__hint">Нажмите, чтобы рассмотреть документ</span>
+          </button>
+          <div class="archive-item__body">
+            <p class="archive-note">Пожелание коллективу Детского театра балета «Эльф».</p>
+          </div>
+        </article>
+
+        <article class="archive-item">
+          <div class="archive-item__head archive-person">
+            <h2>Вадим Яруллин</h2>
+            <p class="archive-person__role">Заслуженный артист Татарстана</p>
+          </div>
+          <button class="archive-scan archive-item__media" type="button"
+                  data-full="../assets/images/archive/review-yarullin.jpg"
+                  data-caption="Вадим Яруллин — поздравление из архива театра">
+            <img loading="lazy" decoding="async" width="826" height="1169"
+                 src="../assets/images/archive/review-yarullin.jpg"
+                 alt="Скан поздравления Вадима Яруллина воспитанникам театра «Эльф» с рукописной подписью">
+            <span class="archive-scan__hint">Нажмите, чтобы рассмотреть документ</span>
+          </button>
+          <div class="archive-item__body">
+            <p class="archive-note">Тёплое поздравление воспитанникам «Эльфа» с премьерой и пожелания дальнейших успехов.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="archive-outro" aria-labelledby="archive-outro-title">
+      <div class="container">
+        <h2 id="archive-outro-title">Более 30 лет рядом со сценой</h2>
+        <p class="archive-outro__text">История «Эльфа» продолжается в сегодняшних учениках, педагогах, репетициях и спектаклях. Архивные страницы напоминают о людях и встречах, из которых складывался путь театра, а новые поколения продолжают эту историю уже сегодня.</p>
+        <div class="archive-outro__links">
+          <a href="../#history">История театра <span aria-hidden="true">→</span></a>
+          <a href="../#gallery">Жизнь театра <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom">
+      <a class="brand footer__brand" href="../" aria-label="Эльф — на главную">
+        <span class="brand__name">Эльф</span>
+        <span class="brand__caption">Детский театр балета</span>
+      </a>
+      <p>Москва · с 1992 года</p>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <div class="archive-lightbox" id="archive-lightbox" role="dialog" aria-modal="true" aria-label="Увеличенный скан документа" hidden>
+    <button class="archive-lightbox__close" type="button" aria-label="Закрыть">×</button>
+    <img class="archive-lightbox__img" src="" alt="">
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    (function () {
+      var lightbox = document.getElementById('archive-lightbox');
+      if (!lightbox) return;
+      var lightboxImg = lightbox.querySelector('.archive-lightbox__img');
+      var closeButton = lightbox.querySelector('.archive-lightbox__close');
+      var lastTrigger = null;
+
+      function openLightbox(trigger) {
+        lastTrigger = trigger;
+        lightboxImg.src = trigger.getAttribute('data-full');
+        lightboxImg.alt = trigger.getAttribute('data-caption') || '';
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+        document.body.style.overflow = '';
+        if (lastTrigger) lastTrigger.focus();
+      }
+
+      document.querySelectorAll('.archive-scan').forEach(function (trigger) {
+        trigger.addEventListener('click', function () { openLightbox(trigger); });
+      });
+
+      closeButton.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+      });
+    })();
+  </script>
+  <script src="/trial-form-config.js" defer></script>
+  <script src="/trial-form.js" defer></script>
+</body>
+</html>

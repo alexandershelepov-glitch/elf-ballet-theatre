@@ -1357,3 +1357,39 @@ button{font:inherit}
   .shows-breadcrumbs{margin-bottom:20px}
   .shows-split__content .production-quote,.shows-split__content .production-atmosphere__quote{margin-top:28px !important;padding-left:22px;font-size:16px;line-height:var(--leading-body-mobile)}
 }
+
+/* Archive teaser — link from homepage history block to /o-teatre-govoryat/ */
+.history__archive{margin-top:64px}
+.archive-teaser{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:16px 40px;
+  border-top:1px solid var(--line);
+  padding-top:34px;
+}
+.archive-teaser__title{
+  margin:0;
+  color:var(--plum-900);
+  font-family:var(--font-display);
+  font-size:clamp(26px,2.6vw,32px);
+  font-weight:500;
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+.archive-teaser__text{margin:8px 0 0;max-width:520px;color:var(--muted);font-size:15px;line-height:1.6}
+.archive-teaser__link{
+  flex-shrink:0;
+  color:var(--plum-700);
+  font-weight:600;
+  font-size:15px;
+  text-decoration:none;
+  border-bottom:1px solid rgba(97,33,67,.32);
+  padding-bottom:3px;
+  transition:color .2s ease,border-color .2s ease;
+}
+.archive-teaser__link:hover{color:var(--plum-900);border-color:var(--plum-900)}
+.archive-teaser__link:focus-visible{outline:2px solid var(--plum-700);outline-offset:3px}
+
+@media (max-width:620px){
+  .history__archive{margin-top:52px}
+  .archive-teaser{padding-top:28px}
+}
