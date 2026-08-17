@@ -1358,38 +1358,96 @@ button{font:inherit}
   .shows-split__content .production-quote,.shows-split__content .production-atmosphere__quote{margin-top:28px !important;padding-left:22px;font-size:16px;line-height:var(--leading-body-mobile)}
 }
 
-/* Archive teaser — link from homepage history block to /o-teatre-govoryat/ */
-.history__archive{margin-top:64px}
-.archive-teaser{
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-  gap:16px 40px;
+/* Archive reviews — standalone homepage section linking to /o-teatre-govoryat/ */
+.archive-home{
+  padding:88px 0 96px;
+  background:var(--cream);
+  color:var(--ink);
   border-top:1px solid var(--line);
-  padding-top:34px;
 }
-.archive-teaser__title{
+.archive-home__head{max-width:760px}
+.archive-home__head h2{
   margin:0;
   color:var(--plum-900);
   font-family:var(--font-display);
-  font-size:clamp(26px,2.6vw,32px);
+  font-size:clamp(40px,4.3vw,56px);
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-.03em;
+  text-wrap:balance;
+}
+.archive-home__intro{margin:20px 0 0;max-width:640px;color:var(--muted);font-size:var(--text-body);line-height:var(--leading-body)}
+.archive-home__grid{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  grid-template-areas:"media name" "media content";
+  column-gap:clamp(36px,5vw,76px);
+  row-gap:20px;
+  align-items:start;
+  margin-top:56px;
+}
+.archive-home__name{
+  grid-area:name;
+  align-self:end;
+  margin:0;
+  color:var(--plum-900);
+  font-family:var(--font-display);
+  font-size:clamp(28px,2.8vw,38px);
   font-weight:500;
   line-height:1.1;
   letter-spacing:-.02em;
+  text-wrap:balance;
 }
-.archive-teaser__text{margin:8px 0 0;max-width:520px;color:var(--muted);font-size:15px;line-height:1.6}
-.archive-teaser__link{
-  flex-shrink:0;
-  color:var(--plum-700);
-  font-weight:600;
-  font-size:15px;
-  text-decoration:none;
-  border-bottom:1px solid rgba(97,33,67,.32);
-  padding-bottom:3px;
-  transition:color .2s ease,border-color .2s ease;
+.archive-home__media{
+  grid-area:media;
+  margin:0;
+  padding:16px 16px 12px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  background:#fff;
+  box-shadow:var(--shadow);
 }
-.archive-teaser__link:hover{color:var(--plum-900);border-color:var(--plum-900)}
-.archive-teaser__link:focus-visible{outline:2px solid var(--plum-700);outline-offset:3px}
+.archive-home__media img{
+  display:block;
+  width:100%;
+  height:clamp(400px,56vh,540px);
+  object-fit:contain;
+  border-radius:8px;
+}
+.archive-home__content{grid-area:content;align-self:start}
+.archive-home__quote{
+  margin:0;
+  padding-left:24px;
+  border-left:2px solid var(--rose);
+  color:var(--plum-800);
+  font-family:var(--font-display);
+  font-size:clamp(22px,2.2vw,27px);
+  font-weight:500;
+  line-height:1.42;
+}
+.archive-home__quote p{margin:0}
+.archive-home__signature{margin:18px 0 0;font-size:15px;line-height:1.65;font-weight:600;color:var(--ink)}
+.archive-home__names{margin:16px 0 0;font-size:13.5px;line-height:1.7;color:var(--muted)}
+.archive-home__cta{margin-top:28px;text-decoration:none}
+.archive-home__cta:focus-visible{outline:2px solid var(--plum-700);outline-offset:3px}
+
+@media (max-width:900px){
+  .archive-home{padding:78px 0 84px}
+  .archive-home__grid{
+    display:flex;
+    flex-direction:column;
+    row-gap:0;
+    margin-top:44px;
+  }
+  .archive-home__name{order:1}
+  .archive-home__media{order:2;margin-top:22px;width:100%}
+  .archive-home__media img{height:auto}
+  .archive-home__content{order:3;margin-top:26px}
+}
 
 @media (max-width:620px){
-  .history__archive{margin-top:52px}
-  .archive-teaser{padding-top:28px}
+  .archive-home{padding:64px 0 72px}
+  .archive-home__media{padding:12px 12px 10px}
+  .archive-home__quote{padding-left:20px}
+  .archive-home__cta{width:100%}
 }
