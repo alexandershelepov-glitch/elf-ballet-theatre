@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/images/hero.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-1189.webp" imagesrcset="assets/images/hero-720.webp 720w, assets/images/hero-1189.webp 1189w" imagesizes="100vw">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -72,7 +72,9 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__media" role="img" aria-label="Сценическая фотография театра «Эльф»"></div>
+      <div class="hero__media">
+        <img fetchpriority="high" decoding="async" width="1189" height="783" src="assets/images/hero.jpg" srcset="assets/images/hero-720.webp 720w, assets/images/hero-1189.webp 1189w" sizes="100vw" alt="Сценическая фотография театра «Эльф»">
+      </div>
       <div class="hero__shade"></div>
 
       <div class="hero__content container">
@@ -186,7 +188,7 @@
 
       <div class="container performances__layout">
         <article class="performance-feature">
-          <img loading="lazy" decoding="async" width="1291" height="876" src="assets/images/performance-main.jpg" alt="Сцена из спектакля Детского театра балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1291" height="876" src="assets/images/performance-main.jpg" srcset="assets/images/performance-main-640.webp 640w, assets/images/performance-main-960.webp 960w, assets/images/performance-main-1291.webp 1291w" sizes="(max-width:1050px) calc(100vw - 48px), 790px" alt="Сцена из спектакля Детского театра балета «Эльф»">
           <div class="performance-feature__shade"></div>
           <div class="performance-feature__caption">
             <span>Репертуар театра</span>
@@ -196,13 +198,13 @@
 
         <div class="performance-mosaic" aria-label="Фотографии спектаклей">
           <figure class="performance-shot performance-shot--wide">
-            <img loading="lazy" decoding="async" width="1320" height="805" src="assets/images/performance-2.jpg" alt="Фрагмент сценической постановки театра «Эльф»">
+            <img loading="lazy" decoding="async" width="1320" height="805" src="assets/images/performance-2.jpg" srcset="assets/images/performance-2-640.webp 640w, assets/images/performance-2-960.webp 960w, assets/images/performance-2-1320.webp 1320w" sizes="(max-width:1050px) calc(100vw - 48px), 410px" alt="Фрагмент сценической постановки театра «Эльф»">
           </figure>
           <figure class="performance-shot">
-            <img loading="lazy" decoding="async" width="1313" height="848" src="assets/images/performance-3.jpg" alt="Артисты театра «Эльф» после спектакля">
+            <img loading="lazy" decoding="async" width="1313" height="848" src="assets/images/performance-3.jpg" srcset="assets/images/performance-3-640.webp 640w, assets/images/performance-3-960.webp 960w, assets/images/performance-3-1313.webp 1313w" sizes="(max-width:1050px) calc(50vw - 31px), 410px" alt="Артисты театра «Эльф» после спектакля">
           </figure>
           <figure class="performance-shot">
-            <img loading="lazy" decoding="async" width="1320" height="1720" src="assets/images/performance-4.jpg" alt="Юная артистка театра «Эльф» на сцене">
+            <img loading="lazy" decoding="async" width="1320" height="1720" src="assets/images/performance-4.jpg" srcset="assets/images/performance-4-640.webp 640w, assets/images/performance-4-960.webp 960w, assets/images/performance-4-1320.webp 1320w" sizes="(max-width:1050px) calc(50vw - 31px), 410px" alt="Юная артистка театра «Эльф» на сцене">
           </figure>
         </div>
       </div>
@@ -233,14 +235,14 @@
 
       <div class="container history__visual">
         <figure class="history-photo history-photo--main">
-          <img loading="lazy" decoding="async" width="4270" height="2900" src="assets/images/history-archive-stage.jpg" alt="Архивная фотография одной из ранних постановок театра «Эльф»">
+          <img loading="lazy" decoding="async" width="4270" height="2900" src="assets/images/history-archive-stage.jpg" srcset="assets/images/history-archive-stage-640.webp 640w, assets/images/history-archive-stage-960.webp 960w, assets/images/history-archive-stage-1400.webp 1400w" sizes="(max-width:780px) calc(100vw - 30px), 830px" alt="Архивная фотография одной из ранних постановок театра «Эльф»">
           <figcaption>Архив театра</figcaption>
         </figure>
         <figure class="history-photo history-photo--small history-photo--one">
-          <img loading="lazy" decoding="async" width="2903" height="4106" src="assets/images/history-archive-group.jpg" alt="Архивная фотография воспитанников театра «Эльф»">
+          <img loading="lazy" decoding="async" width="2903" height="4106" src="assets/images/history-archive-group.jpg" srcset="assets/images/history-archive-group-640.webp 640w, assets/images/history-archive-group-960.webp 960w, assets/images/history-archive-group-1400.webp 1400w" sizes="(max-width:780px) calc(50vw - 21px), 356px" alt="Архивная фотография воспитанников театра «Эльф»">
         </figure>
         <figure class="history-photo history-photo--small history-photo--two">
-          <img loading="lazy" decoding="async" width="3024" height="4429" src="assets/images/history-archive-duet.jpg" alt="Архивная сценическая фотография воспитанников театра «Эльф»">
+          <img loading="lazy" decoding="async" width="3024" height="4429" src="assets/images/history-archive-duet.jpg" srcset="assets/images/history-archive-duet-640.webp 640w, assets/images/history-archive-duet-960.webp 960w, assets/images/history-archive-duet-1400.webp 1400w" sizes="(max-width:780px) calc(50vw - 21px), 356px" alt="Архивная сценическая фотография воспитанников театра «Эльф»">
         </figure>
       </div>
 
@@ -254,7 +256,7 @@
 
         <div class="continuity__portraits" aria-label="Руководитель театра">
           <figure class="portrait-card portrait-card--current">
-            <img loading="lazy" decoding="async" width="1268" height="1889" src="assets/images/history-current.jpg" alt="Екатерина Викторовна Анисимова">
+            <img loading="lazy" decoding="async" width="1268" height="1889" src="assets/images/history-current.jpg" srcset="assets/images/history-current-480.webp 480w, assets/images/history-current-800.webp 800w" sizes="(max-width:620px) 78vw, (max-width:780px) 72vw, 400px" alt="Екатерина Викторовна Анисимова">
             <figcaption>
               <strong>Екатерина Викторовна Анисимова</strong>
               <span>Руководитель театра</span>
@@ -300,7 +302,7 @@
       <div class="container teachers__list">
         <article class="teacher-card">
           <div class="teacher-card__portrait">
-            <img loading="lazy" decoding="async" width="887" height="1920" src="assets/images/history-founder.jpg" alt="Наталия Вячеславовна Борисова">
+            <img loading="lazy" decoding="async" width="887" height="1920" src="assets/images/history-founder.jpg" srcset="assets/images/history-founder-480.webp 480w" sizes="(max-width:780px) 112px, 150px" alt="Наталия Вячеславовна Борисова">
           </div>
           <div class="teacher-card__content">
             <span class="teacher-card__number">01</span>
@@ -311,7 +313,7 @@
 
         <article class="teacher-card">
           <div class="teacher-card__portrait">
-            <img loading="lazy" decoding="async" width="1268" height="1889" src="assets/images/history-current.jpg" alt="Екатерина Викторовна Анисимова">
+            <img loading="lazy" decoding="async" width="1268" height="1889" src="assets/images/history-current.jpg" srcset="assets/images/history-current-480.webp 480w" sizes="(max-width:780px) 112px, 150px" alt="Екатерина Викторовна Анисимова">
           </div>
           <div class="teacher-card__content">
             <span class="teacher-card__number">02</span>
@@ -322,7 +324,7 @@
 
         <article class="teacher-card">
           <div class="teacher-card__portrait">
-            <img loading="lazy" decoding="async" width="1285" height="1668" src="assets/images/teacher-andrey.jpg" alt="Андрей Александрович Стародубов">
+            <img loading="lazy" decoding="async" width="1285" height="1668" src="assets/images/teacher-andrey.jpg" srcset="assets/images/teacher-andrey-480.webp 480w" sizes="(max-width:780px) 112px, 150px" alt="Андрей Александрович Стародубов">
           </div>
           <div class="teacher-card__content">
             <span class="teacher-card__number">03</span>
@@ -344,27 +346,27 @@
 
       <div class="container gallery-grid" aria-label="Фотографии из жизни театра">
         <figure class="gallery-item gallery-item--hero">
-          <img loading="lazy" decoding="async" width="1189" height="783" src="assets/images/gallery-1.jpg" alt="Сценическая фотография театра «Эльф»">
+          <img loading="lazy" decoding="async" width="1189" height="783" src="assets/images/hero.jpg" srcset="assets/images/hero-720.webp 720w, assets/images/hero-1189.webp 1189w" sizes="(max-width:620px) calc(100vw - 30px), (max-width:780px) calc(100vw - 42px), 560px" alt="Сценическая фотография театра «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--one">
-          <img loading="lazy" decoding="async" width="1320" height="949" src="assets/images/gallery-2.jpg" alt="Занятие в детской группе театра «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="949" src="assets/images/direction-choreo.jpg" srcset="assets/images/direction-choreo-640.webp 640w, assets/images/direction-choreo-960.webp 960w, assets/images/direction-choreo-1320.webp 1320w" sizes="(max-width:620px) calc(100vw - 30px), (max-width:780px) calc(50vw - 21px), 335px" alt="Занятие в детской группе театра «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--two">
-          <img loading="lazy" decoding="async" width="1320" height="1630" src="assets/images/gallery-3.jpg" alt="Театральная студия Детского театра балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="1630" src="assets/images/direction-theatre.jpg" srcset="assets/images/direction-theatre-640.webp 640w, assets/images/direction-theatre-960.webp 960w, assets/images/direction-theatre-1320.webp 1320w" sizes="(max-width:620px) calc(100vw - 30px), (max-width:780px) calc(50vw - 21px), 335px" alt="Театральная студия Детского театра балета «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--wide">
-          <img loading="lazy" decoding="async" width="1320" height="805" src="assets/images/gallery-4.jpg" alt="Фрагмент сценической постановки театра «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="805" src="assets/images/performance-2.jpg" srcset="assets/images/performance-2-640.webp 640w, assets/images/performance-2-960.webp 960w, assets/images/performance-2-1320.webp 1320w" sizes="(max-width:620px) calc(100vw - 30px), (max-width:780px) calc(100vw - 42px), 690px" alt="Фрагмент сценической постановки театра «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--three">
-          <img loading="lazy" decoding="async" width="1320" height="1674" src="assets/images/gallery-5.jpg" alt="Классический танец в Детском театре балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1320" height="1674" src="assets/images/direction-classic.jpg" srcset="assets/images/direction-classic-640.webp 640w, assets/images/direction-classic-960.webp 960w, assets/images/direction-classic-1320.webp 1320w" sizes="(max-width:620px) calc(100vw - 30px), (max-width:780px) calc(50vw - 21px), 335px" alt="Классический танец в Детском театре балета «Эльф»">
         </figure>
 
         <figure class="gallery-item gallery-item--small gallery-item--four">
-          <img loading="lazy" decoding="async" width="1313" height="848" src="assets/images/gallery-6.jpg" alt="Артисты театра «Эльф» после выступления">
+          <img loading="lazy" decoding="async" width="1313" height="848" src="assets/images/performance-3.jpg" srcset="assets/images/performance-3-640.webp 640w, assets/images/performance-3-960.webp 960w, assets/images/performance-3-1313.webp 1313w" sizes="(max-width:620px) calc(100vw - 30px), (max-width:780px) calc(50vw - 21px), 335px" alt="Артисты театра «Эльф» после выступления">
         </figure>
       </div>
     </section>
@@ -434,7 +436,7 @@
         </div>
 
         <figure class="contacts__photo">
-          <img loading="lazy" decoding="async" width="1235" height="742" src="assets/images/contacts-stage.jpg" alt="Сцена Детского театра балета «Эльф»">
+          <img loading="lazy" decoding="async" width="1235" height="742" src="assets/images/contacts-stage.jpg" srcset="assets/images/contacts-stage-640.webp 640w, assets/images/contacts-stage-960.webp 960w, assets/images/contacts-stage-1235.webp 1235w" sizes="(max-width:620px) calc(100vw - 30px), 590px" alt="Сцена Детского театра балета «Эльф»">
         </figure>
       </div>
     </section>

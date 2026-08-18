@@ -107,9 +107,12 @@ button{font:inherit}
 }
 .hero__media{
   position:absolute;inset:0;z-index:-3;
-  background-image:url("assets/images/hero.jpg");
-  background-size:cover;
-  background-position:center 48%;
+}
+.hero__media img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 48%;
+  display:block;
 }
 .hero__media:after{
   content:"";
@@ -228,10 +231,20 @@ button{font:inherit}
   border-radius:14px;
 }
 .photo-slot--choreo{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),url("assets/images/direction-choreo.jpg");background-position:center 45%}
+.photo-slot--choreo{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),-webkit-image-set(url("assets/images/direction-choreo-640.webp") 1x,url("assets/images/direction-choreo-1320.webp") 2x)}
+.photo-slot--choreo{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),image-set(url("assets/images/direction-choreo-640.webp") 1x,url("assets/images/direction-choreo-1320.webp") 2x)}
 .photo-slot--classic{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),url("assets/images/direction-classic.jpg");background-position:center 38%}
+.photo-slot--classic{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),-webkit-image-set(url("assets/images/direction-classic-640.webp") 1x,url("assets/images/direction-classic-1320.webp") 2x)}
+.photo-slot--classic{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),image-set(url("assets/images/direction-classic-640.webp") 1x,url("assets/images/direction-classic-1320.webp") 2x)}
 .photo-slot--plastic{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),url("assets/images/direction-plastic.jpg");background-position:center 46%}
+.photo-slot--plastic{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),-webkit-image-set(url("assets/images/direction-plastic-640.webp") 1x,url("assets/images/direction-plastic-1320.webp") 2x)}
+.photo-slot--plastic{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),image-set(url("assets/images/direction-plastic-640.webp") 1x,url("assets/images/direction-plastic-1320.webp") 2x)}
 .photo-slot--theatre{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),url("assets/images/direction-theatre.jpg");background-position:center 38%}
+.photo-slot--theatre{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),-webkit-image-set(url("assets/images/direction-theatre-640.webp") 1x,url("assets/images/direction-theatre-1320.webp") 2x)}
+.photo-slot--theatre{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),image-set(url("assets/images/direction-theatre-640.webp") 1x,url("assets/images/direction-theatre-1320.webp") 2x)}
 .photo-slot--body{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),url("assets/images/direction-body.jpg");background-position:center 48%}
+.photo-slot--body{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),-webkit-image-set(url("assets/images/direction-body-640.webp") 1x,url("assets/images/direction-body-1259.webp") 2x)}
+.photo-slot--body{background-image:linear-gradient(180deg,transparent 50%,rgba(36,16,31,.68)),image-set(url("assets/images/direction-body-640.webp") 1x,url("assets/images/direction-body-1259.webp") 2x)}
 .direction-card__body{padding:24px 22px 26px}
 .direction-card__age{
   margin:0 0 8px;color:var(--rose);
@@ -981,7 +994,7 @@ button{font:inherit}
   }
   .nav.is-open{display:flex}
   .hero{height:auto;min-height:700px}
-  .hero__media{background-position:58% center}
+  .hero__media img{object-position:58% center}
   .hero__content{padding-top:90px}
   .hero h1{font-size:clamp(56px,17vw,82px)}
   .hero__lead{font-size:16px}
