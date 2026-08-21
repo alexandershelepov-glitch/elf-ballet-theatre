@@ -1225,7 +1225,7 @@ button{font:inherit}
 .shows-links a:hover{border-color:var(--plum-700);color:var(--plum-900)}
 
 .messenger-lead{margin:22px 0 0;font-size:13px;font-weight:600;color:rgba(50,19,38,.58)}
-.trial__action>p.messenger-lead,.direction-trial__action>p.messenger-lead{font-size:13px;font-weight:600;text-transform:none;letter-spacing:.02em}
+.trial__action>p.messenger-lead,.direction-trial__action>p.messenger-lead,.shows-cta__action>p.messenger-lead{font-size:13px;font-weight:600;text-transform:none;letter-spacing:.02em}
 .messenger-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .messenger-button{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--plum-700);transition:.2s}
 .messenger-button:hover{border-color:var(--plum-700);color:var(--plum-900)}
