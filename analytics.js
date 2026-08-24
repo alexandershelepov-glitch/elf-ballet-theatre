@@ -31,7 +31,8 @@
   var PERFORMANCES = {
     'shchelkunchik': 'nutcracker',
     'spyashchaya-krasavitsa': 'sleeping_beauty',
-    'zhar-ptitsa': 'firebird'
+    'zhar-ptitsa': 'firebird',
+    'snezhnaya-koroleva': 'snow_queen'
   };
 
   document.addEventListener('click', function (event) {
