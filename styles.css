@@ -258,6 +258,7 @@ button{font:inherit}
 }
 .direction-card__body>p:not(.direction-card__age){font-size:var(--text-card);line-height:var(--leading-card);color:var(--muted);min-height:112px}
 .direction-card__body a{font-size:var(--text-small);font-weight:600;color:var(--plum-700)}
+.history__more{display:inline-block;margin-top:18px;font-size:var(--text-small);font-weight:600;color:var(--plum-700)}
 .directions-note{
   margin:38px auto 0;
   width:max-content;max-width:100%;
