@@ -32,7 +32,8 @@
     'shchelkunchik': 'nutcracker',
     'spyashchaya-krasavitsa': 'sleeping_beauty',
     'zhar-ptitsa': 'firebird',
-    'snezhnaya-koroleva': 'snow_queen'
+    'snezhnaya-koroleva': 'snow_queen',
+    'zolushka': 'cinderella'
   };
 
   document.addEventListener('click', function (event) {
