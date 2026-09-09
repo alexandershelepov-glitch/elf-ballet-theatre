@@ -471,7 +471,7 @@ button{font:inherit}
   display:block;
 }
 .teacher-card:nth-child(1) .teacher-card__portrait img{object-position:center 23%}
-.teacher-card:nth-child(2) .teacher-card__portrait img{object-position:center 22%}
+.teacher-card:nth-child(2) .teacher-card__portrait img{object-position:center 8%}
 .teacher-card:nth-child(3) .teacher-card__portrait img{object-position:center 30%}
 .teacher-card__content{
   position:relative;
